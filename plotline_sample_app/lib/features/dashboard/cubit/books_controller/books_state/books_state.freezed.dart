@@ -19,7 +19,7 @@ mixin _$BooksState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(BooksEntity items) success,
     required TResult Function() error,
     required TResult Function() initial,
   }) =>
@@ -27,7 +27,7 @@ mixin _$BooksState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(BooksEntity items)? success,
     TResult? Function()? error,
     TResult? Function()? initial,
   }) =>
@@ -35,7 +35,7 @@ mixin _$BooksState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(BooksEntity items)? success,
     TResult Function()? error,
     TResult Function()? initial,
     required TResult orElse(),
@@ -131,7 +131,7 @@ class _$BooksStateLoadingImpl implements BooksStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(BooksEntity items) success,
     required TResult Function() error,
     required TResult Function() initial,
   }) {
@@ -142,7 +142,7 @@ class _$BooksStateLoadingImpl implements BooksStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(BooksEntity items)? success,
     TResult? Function()? error,
     TResult? Function()? initial,
   }) {
@@ -153,7 +153,7 @@ class _$BooksStateLoadingImpl implements BooksStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(BooksEntity items)? success,
     TResult Function()? error,
     TResult Function()? initial,
     required TResult orElse(),
@@ -211,6 +211,10 @@ abstract class _$$BooksStateSuccessImplCopyWith<$Res> {
   factory _$$BooksStateSuccessImplCopyWith(_$BooksStateSuccessImpl value,
           $Res Function(_$BooksStateSuccessImpl) then) =
       __$$BooksStateSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BooksEntity items});
+
+  $BooksEntityCopyWith<$Res> get items;
 }
 
 /// @nodoc
@@ -223,60 +227,96 @@ class __$$BooksStateSuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of BooksState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$BooksStateSuccessImpl(
+      null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as BooksEntity,
+    ));
+  }
+
+  /// Create a copy of BooksState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BooksEntityCopyWith<$Res> get items {
+    return $BooksEntityCopyWith<$Res>(_value.items, (value) {
+      return _then(_value.copyWith(items: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$BooksStateSuccessImpl implements BooksStateSuccess {
-  const _$BooksStateSuccessImpl();
+  const _$BooksStateSuccessImpl(this.items);
+
+  @override
+  final BooksEntity items;
 
   @override
   String toString() {
-    return 'BooksState.success()';
+    return 'BooksState.success(items: $items)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BooksStateSuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$BooksStateSuccessImpl &&
+            (identical(other.items, items) || other.items == items));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, items);
+
+  /// Create a copy of BooksState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BooksStateSuccessImplCopyWith<_$BooksStateSuccessImpl> get copyWith =>
+      __$$BooksStateSuccessImplCopyWithImpl<_$BooksStateSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(BooksEntity items) success,
     required TResult Function() error,
     required TResult Function() initial,
   }) {
-    return success();
+    return success(items);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(BooksEntity items)? success,
     TResult? Function()? error,
     TResult? Function()? initial,
   }) {
-    return success?.call();
+    return success?.call(items);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(BooksEntity items)? success,
     TResult Function()? error,
     TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(items);
     }
     return orElse();
   }
@@ -320,7 +360,16 @@ class _$BooksStateSuccessImpl implements BooksStateSuccess {
 }
 
 abstract class BooksStateSuccess implements BooksState {
-  const factory BooksStateSuccess() = _$BooksStateSuccessImpl;
+  const factory BooksStateSuccess(final BooksEntity items) =
+      _$BooksStateSuccessImpl;
+
+  BooksEntity get items;
+
+  /// Create a copy of BooksState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BooksStateSuccessImplCopyWith<_$BooksStateSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -365,7 +414,7 @@ class _$BooksStateErrorImpl implements BooksStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(BooksEntity items) success,
     required TResult Function() error,
     required TResult Function() initial,
   }) {
@@ -376,7 +425,7 @@ class _$BooksStateErrorImpl implements BooksStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(BooksEntity items)? success,
     TResult? Function()? error,
     TResult? Function()? initial,
   }) {
@@ -387,7 +436,7 @@ class _$BooksStateErrorImpl implements BooksStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(BooksEntity items)? success,
     TResult Function()? error,
     TResult Function()? initial,
     required TResult orElse(),
@@ -485,7 +534,7 @@ class _$BooksStateInitialStateImpl implements BooksStateInitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(BooksEntity items) success,
     required TResult Function() error,
     required TResult Function() initial,
   }) {
@@ -496,7 +545,7 @@ class _$BooksStateInitialStateImpl implements BooksStateInitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(BooksEntity items)? success,
     TResult? Function()? error,
     TResult? Function()? initial,
   }) {
@@ -507,7 +556,7 @@ class _$BooksStateInitialStateImpl implements BooksStateInitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(BooksEntity items)? success,
     TResult Function()? error,
     TResult Function()? initial,
     required TResult orElse(),
