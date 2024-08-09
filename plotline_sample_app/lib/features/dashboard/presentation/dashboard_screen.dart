@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:plotline_sample_app/features/dashboard/cubit/books_controller/books_cubit.dart';
+import 'package:plotline_sample_app/features/dashboard/presentation/atoms/book_list_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:plotline_sample_app/config/constants.dart' as color_constants;
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -12,10 +16,14 @@ class DashboardScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF79d862),
+                color: color_constants.primary,
               ),
         ),
-        backgroundColor: const Color(0xFF09295c),
+        backgroundColor: color_constants.seconday,
+      ),
+      body: Provider(
+        create: (_) => BooksCubit(),
+        child: Center(child: BookList()),
       ),
     );
   }
