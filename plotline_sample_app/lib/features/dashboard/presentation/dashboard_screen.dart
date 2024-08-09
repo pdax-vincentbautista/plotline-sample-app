@@ -10,6 +10,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar
       appBar: AppBar(
         title: Text(
           'PDAX Plotline Sample App',
@@ -21,9 +22,12 @@ class DashboardScreen extends StatelessWidget {
         ),
         backgroundColor: color_constants.seconday,
       ),
+      // UI
       body: Provider(
         create: (_) => BooksCubit(),
-        child: Center(child: BookList()),
+        child: Center(
+          child: BookList(), // Widget for Booklist
+        ),
       ),
     );
   }

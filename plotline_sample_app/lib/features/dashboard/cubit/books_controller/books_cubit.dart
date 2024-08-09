@@ -17,6 +17,7 @@ class BooksCubit extends Cubit<BooksState> {
 
       debugPrint('fetch response = $response');
 
+      // response status code == 200 indicates a successful fetching of data
       if (response.statusCode == 200) {
         BooksEntity books = BooksEntity.fromJson(response.data);
         emit(BooksState.success(books));

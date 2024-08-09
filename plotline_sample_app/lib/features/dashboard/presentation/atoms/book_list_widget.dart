@@ -43,9 +43,11 @@ class _BookListState extends State<BookList> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
+                                  // image
                                   Image.network(
                                     book.image!,
                                     errorBuilder: (context, error, stackTrace) {
+                                      // returns image placeholder if image rendering error occured
                                       return Container(
                                         height: 248,
                                         width: 148,
@@ -59,6 +61,14 @@ class _BookListState extends State<BookList> {
                                                 horizontal: 8),
                                             child: Text(
                                               'Empty Image Link',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge!
+                                                  .copyWith(
+                                                    fontSize: 14,
+                                                    color:
+                                                        color_constants.subText,
+                                                  ),
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 2,
                                             ),
@@ -67,12 +77,26 @@ class _BookListState extends State<BookList> {
                                       );
                                     },
                                   ),
+
                                   const SizedBox(height: 4),
-                                  Text(book.title!),
+
+                                  // book title
+                                  Text(
+                                    book.title!,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge!
+                                        .copyWith(
+                                          fontSize: 14,
+                                          color: color_constants.mainText,
+                                        ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 16),
                           ],
                         ),
                       );
