@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:plotline_engage/plotline.dart';
 import 'package:plotline_sample_app/config/themes.dart';
 import 'package:plotline_sample_app/router/router.dart';
 
@@ -34,33 +35,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // ==================== Variables ==================== //
-    // Plotline.debug(true);
-    // Plotline.setPlotlineEventsListener((eventName, properties) => {
-    //       // Your callback implementation here
-    //       print(
-    //           "Plotline Callback for event: $eventName with properties: $properties")
-    //     });
+    // initialize plotline SDK
+    Plotline.init(
+        "YmE0OGQzZWUtMzQ1ZS00ZjBmLTg1Y2MtY2MzNzY2NWM4ZTI5", "<userId>");
+    // track screens
+    Plotline.trackPage('DashboardScreen', context);
+    Plotline.debug(true);
+    Plotline.setPlotlineEventsListener((eventName, properties) => {
+          // Your callback implementation here
+          print(
+              "Plotline Callback for event: $eventName with properties: $properties")
+        });
 
-    // Plotline.setPlotlineRedirectListener((properties) => {
-    //       // Your callback implementation here
-    //       print("Plotline Redirect Callback with properties: $properties")
-    //     });
-    // Plotline.init(
-    //     "YmE0OGQzZWUtMzQ1ZS00ZjBmLTg1Y2MtY2MzNzY2NWM4ZTI5", "<userId>");
-    // Plotline.setPlotlineEventsListener((eventName, properties) => {
-    //       // Your callback implementation here
-    //       print(
-    //           "Plotline Callback for event: $eventName with properties: $properties")
-    //     });
+    Plotline.setPlotlineRedirectListener((properties) => {
+          // Your callback implementation here
+          print("Plotline Redirect Callback with properties: $properties")
+        });
 
-    // Plotline.setPlotlineRedirectListener((properties) => {
-    //       // Your callback implementation here
-    //       print("Plotline Redirect Callback with properties: $properties")
-    //     });
+    Plotline.setPlotlineEventsListener((eventName, properties) => {
+          // Your callback implementation here
+          print(
+              "Plotline Callback for event: $eventName with properties: $properties")
+        });
 
-    return MaterialApp.router(
-      title: "PDAX Ploline Sample App",
-      routerConfig: GoRouter(routes: routes, initialLocation: '/'),
+    Plotline.setPlotlineRedirectListener((properties) => {
+          // Your callback implementation here
+          print("Plotline Redirect Callback with properties: $properties")
+        });
+
+    return PlotlineWrapper(
+      child: MaterialApp.router(
+        title: "PDAX Ploline Sample App",
+        routerConfig: GoRouter(
+          routes: routes,
+          initialLocation: '/',
+        ),
+      ),
     );
   }
 }
