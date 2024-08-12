@@ -3,6 +3,7 @@ import 'package:plotline_sample_app/features/dashboard/cubit/books_controller/bo
 import 'package:plotline_sample_app/features/dashboard/presentation/atoms/book_list_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:plotline_sample_app/config/constants.dart' as color_constants;
+import 'package:plotline_engage/plotline.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -26,7 +27,10 @@ class DashboardScreen extends StatelessWidget {
       body: Provider(
         create: (_) => BooksCubit(),
         child: Center(
-          child: BookList(), // Widget for Booklist
+          child: PView(
+            valueKey: 'bookList',
+            child: BookList(),
+          ), // Widget for Booklist
         ),
       ),
     );
