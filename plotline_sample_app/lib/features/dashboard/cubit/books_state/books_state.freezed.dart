@@ -213,8 +213,6 @@ abstract class _$$BooksStateSuccessImplCopyWith<$Res> {
       __$$BooksStateSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BooksEntity items});
-
-  $BooksEntityCopyWith<$Res> get items;
 }
 
 /// @nodoc
@@ -230,24 +228,14 @@ class __$$BooksStateSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
+    Object? items = freezed,
   }) {
     return _then(_$BooksStateSuccessImpl(
-      null == items
+      freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as BooksEntity,
     ));
-  }
-
-  /// Create a copy of BooksState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BooksEntityCopyWith<$Res> get items {
-    return $BooksEntityCopyWith<$Res>(_value.items, (value) {
-      return _then(_value.copyWith(items: value));
-    });
   }
 }
 
@@ -269,11 +257,12 @@ class _$BooksStateSuccessImpl implements BooksStateSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BooksStateSuccessImpl &&
-            (identical(other.items, items) || other.items == items));
+            const DeepCollectionEquality().equals(other.items, items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, items);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
 
   /// Create a copy of BooksState
   /// with the given fields replaced by the non-null parameter values.

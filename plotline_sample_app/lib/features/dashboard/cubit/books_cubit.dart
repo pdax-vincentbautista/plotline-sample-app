@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:plotline_sample_app/features/dashboard/cubit/books_controller/books_state/books_state.dart';
+import 'package:plotline_sample_app/features/dashboard/cubit/books_state/books_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plotline_sample_app/features/dashboard/entities/books_entity.dart';
 

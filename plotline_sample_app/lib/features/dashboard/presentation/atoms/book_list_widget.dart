@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plotline_sample_app/features/dashboard/cubit/books_controller/books_cubit.dart';
-import 'package:plotline_sample_app/features/dashboard/cubit/books_controller/books_state/books_state.dart';
+import 'package:plotline_sample_app/features/dashboard/cubit/books_cubit.dart';
+import 'package:plotline_sample_app/features/dashboard/cubit/books_state/books_state.dart';
 import 'package:plotline_sample_app/config/constants.dart' as color_constants;
 
 class BookList extends StatefulWidget {
