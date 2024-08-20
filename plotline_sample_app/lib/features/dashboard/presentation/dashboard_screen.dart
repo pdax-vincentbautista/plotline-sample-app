@@ -5,11 +5,17 @@ import 'package:provider/provider.dart';
 import 'package:plotline_sample_app/config/constants.dart' as color_constants;
 import 'package:plotline_engage/plotline.dart';
 
+import 'package:plotline_engage/plotline_widget.dart';
+
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Plotline.trackPage(
+    //   'DashboardScreen',
+    //   context,
+    // );
     return Scaffold(
       // AppBar
       appBar: AppBar(
@@ -26,11 +32,28 @@ class DashboardScreen extends StatelessWidget {
       // UI
       body: Provider(
         create: (_) => BooksCubit(),
-        child: Center(
-          child: PView(
-            valueKey: 'bookList',
-            child: BookList(),
-          ), // Widget for Booklist
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              PView(
+                valueKey: 'bookList',
+                child: BookList(),
+              ),
+              PlotlineWidget(valueKey: "native1"),
+              PView(
+                valueKey: 'sampleButton',
+                child: InkWell(
+                  child: Text('Sample Button'),
+                  onTap: () {
+                    Plotline.track(
+                      'Button Tapped',
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

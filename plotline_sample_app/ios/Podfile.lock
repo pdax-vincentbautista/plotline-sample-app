@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - Plotline (3.7.4)
+  - plotline_engage (1.4.0):
+    - Flutter
+    - Plotline
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - plotline_engage (from `.symlinks/plugins/plotline_engage/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Plotline
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  plotline_engage:
+    :path: ".symlinks/plugins/plotline_engage/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Plotline: a0544d63023e7d724e65f55e55111c87e191bab4
+  plotline_engage: 23dc17664b7560d4a335cfdfa060663c143eaadd
+
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+
+COCOAPODS: 1.15.2
