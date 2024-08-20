@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plotline_engage/observer.dart';
 import 'package:plotline_engage/plotline.dart';
-import 'package:plotline_sample_app/config/themes.dart';
 import 'package:plotline_sample_app/router/router.dart';
-
-// import 'package:plotline_engage/observer.dart';
 
 void main() {
   runApp(const MyHomePage(
