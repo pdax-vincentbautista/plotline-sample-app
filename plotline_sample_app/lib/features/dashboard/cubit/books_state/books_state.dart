@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:plotline_sample_app/features/dashboard/entities/books_entity.dart';
+import 'package:plotline_sample_app/features/dashboard/entities/books_model.dart';
 
 part 'books_state.freezed.dart';
 
